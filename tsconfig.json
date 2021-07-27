@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.settings",
+  "include": ["./src", "./typings", "./vite.config.ts"],
+  "compilerOptions": {
+    "outDir": "./build/dts/",
+    "module": "es6",
+    "target": "es2015",
+    "jsx": "react",
+    "allowJs": true,
+    "sourceMap": true
+  }
+}
