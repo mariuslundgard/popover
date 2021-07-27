@@ -1,82 +1,170 @@
+import {Box, Card, Code, Container, Heading, Layer, Portal, Stack, Text} from '@sanity/ui'
 import React, {CSSProperties, useMemo, useState} from 'react'
+import styled from 'styled-components'
 import {getPlacementStyle, useRect} from './popover'
 
+const RefBox = styled(Box)`
+  background: red;
+`
+
+const PopoverLayer = styled(Layer)`
+  position: fixed;
+`
+
 export function App() {
-  const [element, setElement] = useState<HTMLDivElement | null>(null)
+  const [referenceElement, setReferenceElement] = useState<HTMLDivElement | null>(null)
   const [popperElement, setPopperElement] = useState<HTMLDivElement | null>(null)
-  const referenceRect = useRect(element)
+  const referenceRect = useRect(referenceElement)
   const popoverRect = useRect(popperElement)
 
-  const referenceStyle: CSSProperties = useMemo(
-    () => ({
-      background: 'red',
-      display: 'inline-block',
-    }),
-    []
-  )
-
   const popoverStyle: CSSProperties = useMemo(
-    () => ({
-      background: '#ccc',
-      position: 'fixed',
-      ...getPlacementStyle('bottom', referenceRect, popoverRect),
-    }),
+    () => getPlacementStyle('bottom', referenceRect, popoverRect),
     [popoverRect, referenceRect]
   )
 
   return (
-    <div>
-      <p>Text</p>
-      <p>Text</p>
-      <p>Text</p>
-      <p>Text</p>
+    <Container>
+      <Stack padding={4} space={4}>
+        <Heading as="h1">Popover example</Heading>
 
-      <div ref={setElement} style={referenceStyle}>
-        reference
-      </div>
+        <Text as="p" muted>
+          Text
+        </Text>
+        <Text as="p" muted>
+          Text
+        </Text>
+        <Text as="p" muted>
+          Text
+        </Text>
+        <Text as="p" muted>
+          Text
+        </Text>
 
-      <div ref={setPopperElement} style={popoverStyle}>
-        popper
-      </div>
+        <div>
+          <RefBox display="inline-block" padding={3} ref={setReferenceElement}>
+            <Text>reference</Text>
+          </RefBox>
+        </div>
 
-      <pre>{JSON.stringify(referenceRect, null, 2)}</pre>
+        <Portal>
+          <PopoverLayer ref={setPopperElement} style={popoverStyle}>
+            <Card padding={3} radius={2} shadow={2}>
+              <Text muted>Popover</Text>
+            </Card>
+          </PopoverLayer>
+        </Portal>
 
-      <p>Text</p>
-      <p>Text</p>
-      <p>Text</p>
-      <p>Text</p>
-      <p>Text</p>
-      <p>Text</p>
-      <p>Text</p>
-      <p>Text</p>
-      <p>Text</p>
-      <p>Text</p>
-      <p>Text</p>
-      <p>Text</p>
-      <p>Text</p>
-      <p>Text</p>
-      <p>Text</p>
-      <p>Text</p>
-      <p>Text</p>
-      <p>Text</p>
-      <p>Text</p>
-      <p>Text</p>
-      <p>Text</p>
-      <p>Text</p>
-      <p>Text</p>
-      <p>Text</p>
-      <p>Text</p>
-      <p>Text</p>
-      <p>Text</p>
-      <p>Text</p>
-      <p>Text</p>
-      <p>Text</p>
-      <p>Text</p>
-      <p>Text</p>
-      <p>Text</p>
-      <p>Text</p>
-      <p>Text</p>
-      <p>Text</p>
-    </div>
+        <Code>{JSON.stringify(referenceRect, null, 2)}</Code>
+
+        <Text as="p" muted>
+          Text
+        </Text>
+        <Text as="p" muted>
+          Text
+        </Text>
+        <Text as="p" muted>
+          Text
+        </Text>
+        <Text as="p" muted>
+          Text
+        </Text>
+        <Text as="p" muted>
+          Text
+        </Text>
+        <Text as="p" muted>
+          Text
+        </Text>
+        <Text as="p" muted>
+          Text
+        </Text>
+        <Text as="p" muted>
+          Text
+        </Text>
+        <Text as="p" muted>
+          Text
+        </Text>
+        <Text as="p" muted>
+          Text
+        </Text>
+        <Text as="p" muted>
+          Text
+        </Text>
+        <Text as="p" muted>
+          Text
+        </Text>
+        <Text as="p" muted>
+          Text
+        </Text>
+        <Text as="p" muted>
+          Text
+        </Text>
+        <Text as="p" muted>
+          Text
+        </Text>
+        <Text as="p" muted>
+          Text
+        </Text>
+        <Text as="p" muted>
+          Text
+        </Text>
+        <Text as="p" muted>
+          Text
+        </Text>
+        <Text as="p" muted>
+          Text
+        </Text>
+        <Text as="p" muted>
+          Text
+        </Text>
+        <Text as="p" muted>
+          Text
+        </Text>
+        <Text as="p" muted>
+          Text
+        </Text>
+        <Text as="p" muted>
+          Text
+        </Text>
+        <Text as="p" muted>
+          Text
+        </Text>
+        <Text as="p" muted>
+          Text
+        </Text>
+        <Text as="p" muted>
+          Text
+        </Text>
+        <Text as="p" muted>
+          Text
+        </Text>
+        <Text as="p" muted>
+          Text
+        </Text>
+        <Text as="p" muted>
+          Text
+        </Text>
+        <Text as="p" muted>
+          Text
+        </Text>
+        <Text as="p" muted>
+          Text
+        </Text>
+        <Text as="p" muted>
+          Text
+        </Text>
+        <Text as="p" muted>
+          Text
+        </Text>
+        <Text as="p" muted>
+          Text
+        </Text>
+        <Text as="p" muted>
+          Text
+        </Text>
+        <Text as="p" muted>
+          Text
+        </Text>
+      </Stack>
+    </Container>
   )
 }
