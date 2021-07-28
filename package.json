@@ -5,6 +5,7 @@
   "author": "Marius Lundgård <studio@mariuslundgard.com>",
   "license": "MIT",
   "scripts": {
+    "build": "vite build",
     "dev": "vite",
     "lint": "eslint . --ext .js,.jsx,.mjs,.ts,.tsx --quiet",
     "test": "jest"

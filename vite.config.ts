@@ -4,7 +4,7 @@ import {defineConfig} from 'vite'
 
 export default defineConfig({
   build: {
-    outDir: path.resolve(__dirname, 'public'),
+    outDir: path.resolve(__dirname, 'dist'),
   },
   plugins: [reactRefresh()],
   root: path.resolve(__dirname, 'src'),
