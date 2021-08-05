@@ -3,6 +3,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import {createGlobalStyle, css} from 'styled-components'
 import {App} from './app'
+import {LocationProvider} from './lib/location'
 
 const GlobalStyle = createGlobalStyle(({theme}: {theme: Theme}) => {
   const color = theme.sanity.color.base
@@ -23,13 +24,15 @@ const GlobalStyle = createGlobalStyle(({theme}: {theme: Theme}) => {
 })
 
 ReactDOM.render(
-  <ThemeProvider theme={studioTheme}>
-    <ThemeColorProvider tone="transparent">
-      <GlobalStyle />
-    </ThemeColorProvider>
-    <Card style={{minHeight: '100%'}}>
-      <App />
-    </Card>
-  </ThemeProvider>,
+  <LocationProvider>
+    <ThemeProvider theme={studioTheme}>
+      <ThemeColorProvider tone="transparent">
+        <GlobalStyle />
+      </ThemeColorProvider>
+      <Card style={{minHeight: '100%'}}>
+        <App />
+      </Card>
+    </ThemeProvider>
+  </LocationProvider>,
   document.getElementById('root')
 )
